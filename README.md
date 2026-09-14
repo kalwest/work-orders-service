@@ -27,6 +27,18 @@ docker run \
   -d postgres:16
 ```
 
+Verify PostgreSQL
+
+Check that the database container is running:
+
+```bash
+docker ps
+```
+
+Check that PostgreSQL is accepting connections:
+
+docker exec wo-db pg_isready -U postgres
+
 ## If the container already exists:
 
 docker start wo-db
