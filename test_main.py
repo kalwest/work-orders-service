@@ -42,3 +42,9 @@ def test_invalid_work_order_returns_400():
     )
 
     assert response.status_code == 400
+
+def test_unknown_work_order_returns_404():
+    response = client.get("/work-orders/999999")
+
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Work order not found"
