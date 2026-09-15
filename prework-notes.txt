@@ -1,0 +1,17 @@
+Part 1 completed.
+
+What I got working:
+- Docker Desktop, FastAPI backend, and PostgreSQL
+- Swagger API call
+- Verified created user in PostgreSQL through Adminer
+- Ran test suite successfully: 58 passed
+- Added phone_number field to User model
+- Generated and applied Alembic migration
+- Re-ran tests successfully: 58 passed
+
+Where I got slowed down:
+- Docker daemon was not running initially.
+- The database schema had not been initialized, so the user table did not exist.
+- The current FastAPI template differed from the warm-up instructions: tests existed on the host but were not present in the running backend container.
+- I used a temporary Docker Compose container with the backend directory mounted to run the test suite.
+- I initially generated the Alembic migration but forgot to apply it before testing; this caused a missing-column error.
