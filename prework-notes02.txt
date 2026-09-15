@@ -1,0 +1,32 @@
+
+
+Part 2 – Prework Notes
+
+What I got working:
+
+- Built a FastAPI service with exactly two endpoints:
+  - POST /work-orders
+  - GET /work-orders/{id}
+- Connected the service to PostgreSQL running in Docker.
+- Stored work orders with title, status, created_at, and generated id.
+- Verified POST creates a record and GET returns it.
+- Added 404 handling for unknown work order IDs.
+- Added 400 handling for invalid input.
+- Added automated pytest coverage for:
+  - create and read round trip
+  - invalid input returning 400
+ - unknown ID returning 404
+- Added README setup and test instructions.
+- Finished with six meaningful Git commits.
+- Pushed the repository to GitHub.
+
+Where I got slowed down:
+
+- zsh interpreted psycopg[binary] as a filename pattern, so the package name had to be quoted during installation.
+- Docker Desktop was not running initially when starting PostgreSQL.
+- I first used the database WorkOrder model directly as the POST request model. Missing status was passed through as None and failed at the database level with a NOT NULL violation.
+- I fixed this by creating a separate WorkOrderCreate request model so invalid requests are rejected before reaching PostgreSQL.
+- FastAPI initially returned 422 for invalid input instead of the required 400.
+- My custom validation handler did not work at first because I had accidentally created the FastAPI app twice with app = FastAPI(), which replaced the app that had the exception handler attached.
+- After removing the duplicate app creation, invalid input correctly returned HTTP 400.
+- I also spent some time fixing README Markdown formatting, especially code blocks and headings.
